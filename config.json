@@ -1,0 +1,10 @@
+{
+    "mainAddress" : "http://26dd5ef27aaa.ngrok.io/",
+    "confirmTimeout" : 300000,
+    "userSchema" : {
+        "eMail" : {
+            "type" : "String",
+            "required" : true
+        }
+    }
+}

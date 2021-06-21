@@ -1,5 +1,5 @@
 {
-  "name": "MineDon",
+  "name": "minedon",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,5 +8,13 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "coffeetils": "^1.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.14",
+    "nodemailer": "^6.6.1",
+    "uuid-token-generator": "^1.0.0"
+  },
+  "devDependencies": {}
 }

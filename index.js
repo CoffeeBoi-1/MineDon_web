@@ -1,0 +1,53 @@
+const app = require('express')()
+const http = require('http').Server(app)
+const nodemailer = require('nodemailer')
+const { readdirSync } = require('fs')
+const { join } = require('path')
+const readline = require('readline')
+const $ = require('coffeetils')
+const mongoose = require('mongoose')
+const config = require('./config.json')
+
+const MAIN_ROUTER = {}
+
+async function Start() {
+    try {
+        MAIN_ROUTER.requests = {}
+        MAIN_ROUTER.config = config
+        MAIN_ROUTER.temporaryUsers = {}
+        MAIN_ROUTER.emailsInUse = {}
+        MAIN_ROUTER.transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.EMAIL_LOGIN, pass: process.env.EMAIL_PASS } })
+        MAIN_ROUTER.transporter.verify((error) => { if (error) { console.log('Error with email connection'); process.exit() } })
+        await mongoose.connect(process.env.DB_LINK, { useNewUrlParser : true, useFindAndModify : false, useUnifiedTopology: true })
+        MAIN_ROUTER.Users = mongoose.model('Users', new mongoose.Schema(config.userSchema))
+
+        const requestFiles = readdirSync(join(__dirname, 'Requests')).filter((file) => file.endsWith('.js'))
+        for (const file of requestFiles) {
+            const request = require(join(__dirname, 'Requests', `${file}`))
+            let requestName = request.name
+            MAIN_ROUTER.requests[requestName] = request
+        }
+
+        app.all('*', async (req, res, next) => {
+            try {
+                const path = req.path.substr(1, req.path.length)
+                const command = MAIN_ROUTER.requests[path]
+
+                if (!command) return res.sendStatus(400)
+
+                await command.execute(MAIN_ROUTER, req.query, res)
+                if (path.includes('api')) next()
+            } catch (error) {
+                console.log(error)
+            }
+        })
+
+        http.listen(process.env.PORT || 3000, () => {
+            console.log('Main router is running!')
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+Start()
