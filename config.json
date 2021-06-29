@@ -1,10 +1,27 @@
 {
-    "mainAddress" : "http://26dd5ef27aaa.ngrok.io/",
-    "confirmTimeout" : 300000,
-    "userSchema" : {
-        "eMail" : {
-            "type" : "String",
-            "required" : true
+    "mainAddress": "http://cb75ccc78274.ngrok.io/",
+    "tokenValidDays": 3,
+    "confirmTimeout": 300000,
+    "userSchema": {
+        "eMail": {
+            "type": "String",
+            "required": true
+        },
+        "password": {
+            "type": "String",
+            "required": true
+        },
+        "token": {
+            "type": "String",
+            "required": false
+        },
+        "tokenValidUntil": {
+            "type": "Date",
+            "required": false
+        },
+        "options": {
+            "type": "Object",
+            "required": false
         }
     }
 }

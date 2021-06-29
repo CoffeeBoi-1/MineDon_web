@@ -4,8 +4,9 @@ class TemporaryUser {
     /**
     * @param {string} eMail User's eMail
     */
-    constructor(eMail) {
+    constructor(eMail, password) {
         this.eMail = eMail
+        this.password = password
         this.token = new TokenGenerator(256, TokenGenerator.BASE62).generate()
         this.confirmTimeout
     }

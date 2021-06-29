@@ -1,0 +1,46 @@
+body {
+    background-color: var(--backgroundColor);
+    font-family: var(--font);
+}
+
+:root {
+    --backgroundColor: #22272c;
+    --font: 'Roboto Condensed', sans-serif;
+}
+
+.roundedCorners {
+    border-radius: 10px;
+    border: 3px solid var(--backgroundColor);
+}
+
+.inputText {
+    padding: 3px;
+    font-family: var(--font);
+    font-size: 25px;
+    text-align: center;
+}
+
+.btn {
+    padding: 3px;
+    font-family: var(--font);
+    color: var(--backgroundColor);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.text {
+    font-family: var(--font);
+    color: white;
+}
+
+.center-horizontal {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+}
+
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
+}

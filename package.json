@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "coffeetils": "^1.0.2",
+    "coffeetils": "^1.0.6",
     "express": "^4.17.1",
     "mongoose": "^5.12.14",
     "nodemailer": "^6.6.1",

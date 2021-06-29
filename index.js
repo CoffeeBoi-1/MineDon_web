@@ -1,3 +1,4 @@
+const express = require('express')
 const app = require('express')()
 const http = require('http').Server(app)
 const nodemailer = require('nodemailer')
@@ -14,11 +15,13 @@ async function Start() {
     try {
         MAIN_ROUTER.requests = {}
         MAIN_ROUTER.config = config
-        MAIN_ROUTER.temporaryUsers = {}
-        MAIN_ROUTER.emailsInUse = {}
+        MAIN_ROUTER.temporaryRegUsers = {}
+        MAIN_ROUTER.temporaryLoginUsers = {}
+        MAIN_ROUTER.regEmailsInUse = {}
+        MAIN_ROUTER.loginEmailsInUse = {}
         MAIN_ROUTER.transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.EMAIL_LOGIN, pass: process.env.EMAIL_PASS } })
         MAIN_ROUTER.transporter.verify((error) => { if (error) { console.log('Error with email connection'); process.exit() } })
-        await mongoose.connect(process.env.DB_LINK, { useNewUrlParser : true, useFindAndModify : false, useUnifiedTopology: true })
+        await mongoose.connect(process.env.DB_LINK, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
         MAIN_ROUTER.Users = mongoose.model('Users', new mongoose.Schema(config.userSchema))
 
         const requestFiles = readdirSync(join(__dirname, 'Requests')).filter((file) => file.endsWith('.js'))
@@ -28,6 +31,8 @@ async function Start() {
             MAIN_ROUTER.requests[requestName] = request
         }
 
+        app.use(express.static(join(__dirname, '/Webpages')));
+
         app.all('*', async (req, res, next) => {
             try {
                 const path = req.path.substr(1, req.path.length)
@@ -35,6 +40,7 @@ async function Start() {
 
                 if (!command) return res.sendStatus(400)
 
+                req.query.cookie = req.headers.cookie
                 await command.execute(MAIN_ROUTER, req.query, res)
                 if (path.includes('api')) next()
             } catch (error) {
