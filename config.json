@@ -1,5 +1,5 @@
 {
-    "mainAddress": "http://cb75ccc78274.ngrok.io/",
+    "mainAddress": "http://fb7366ec8252.ngrok.io/",
     "tokenValidDays": 3,
     "confirmTimeout": 300000,
     "userSchema": {
@@ -21,7 +21,8 @@
         },
         "options": {
             "type": "Object",
-            "required": false
+            "default": {},
+            "required": true
         }
     }
 }

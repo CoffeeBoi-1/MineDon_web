@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'api/get_options',
+    name: 'api/change_password',
 
     /**
      * @param {import('express').Response} res
@@ -11,6 +11,8 @@ module.exports = {
         user = user[0]
         if (Date.now() > user.tokenValidUntil) return res.json({ 'error': 'Token expired!' })
 
-        res.json(user.options)
+        let newValue = { password: args.newPassword }
+        await MAIN_ROUTER.Users.updateOne({ token: args.cookie.token }, { $set: newValue })
+        res.sendStatus(200)
     }
 };

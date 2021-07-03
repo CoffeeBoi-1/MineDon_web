@@ -19,6 +19,7 @@ async function Start() {
         MAIN_ROUTER.temporaryLoginUsers = {}
         MAIN_ROUTER.regEmailsInUse = {}
         MAIN_ROUTER.loginEmailsInUse = {}
+        MAIN_ROUTER.changePasswordEmails = {}
         MAIN_ROUTER.transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.EMAIL_LOGIN, pass: process.env.EMAIL_PASS } })
         MAIN_ROUTER.transporter.verify((error) => { if (error) { console.log('Error with email connection'); process.exit() } })
         await mongoose.connect(process.env.DB_LINK, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
@@ -40,7 +41,7 @@ async function Start() {
 
                 if (!command) return res.sendStatus(400)
 
-                req.query.cookie = req.headers.cookie
+                req.query.cookie = $.GetAppCookies(req.headers.cookie)
                 await command.execute(MAIN_ROUTER, req.query, res)
                 if (path.includes('api')) next()
             } catch (error) {

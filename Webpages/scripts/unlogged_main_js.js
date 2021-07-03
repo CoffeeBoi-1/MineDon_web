@@ -11,3 +11,10 @@ async function Login() {
 
     alert('Verification email was sent! Check your email')
 }
+
+async function RememberPassword () {
+    let res = await $.get('api/remember_password?email=' + document.getElementById('emailInput').value)
+    if (res['error']) return alert(res['error'])
+
+    alert('Email was sent! Check your email')
+}

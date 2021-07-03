@@ -5,6 +5,8 @@ body {
 
 :root {
     --backgroundColor: #22272c;
+    --elementColor: #2f353a;
+    --titleTextColor: #fb8c2b;
     --font: 'Roboto Condensed', sans-serif;
 }
 
@@ -28,9 +30,40 @@ body {
     cursor: pointer;
 }
 
-.text {
+.normalText {
     font-family: var(--font);
-    color: white;
+    color: white; 
+    text-shadow: black 0 0 5px;
+}
+
+.titleText {
+    font-family: var(--font);
+    color: var(--titleTextColor); 
+    text-shadow: black 0 0 5px;
+}
+
+.scroller {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.scroller > div {
+    margin: 10px;
+}
+
+.editorElement {
+    width: 350px;
+    height: 150px;
+    min-width: 350px;
+    background-color: var(--elementColor);
+    margin-top: 10px;
+    overflow: auto;
+    box-shadow: inset 0px 0px 0px 1px var(--elementColor);
+    border-radius: 6px;
 }
 
 .center-horizontal {
