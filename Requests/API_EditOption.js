@@ -8,9 +8,9 @@ module.exports = {
         if (!args.cookie.token) return res.json({ 'error': 'Token is not valid!' })
         if (!args.cost) return res.json({ 'error': 'Not enough variables!' })
         if (!args.id) return res.json({ 'error': 'Not enough variables!' })
-        if (isNaN(args.cost)) return res.json({ 'error': 'Cost in not a number' })
-        if (!args.command || args.command == "") return res.json({ 'error': 'Not enough variables!' })
-        if (!args.name || args.name == "")  return res.json({ 'error': 'Not enough variables!' })
+        if (isNaN(args.cost) || args.cost < 1) return res.json({ 'error': 'Cost in not a number' })
+        if (!args.command || args.command == "" || args.command == "null") return res.json({ 'error': 'Not enough variables!' })
+        if (!args.name || args.name == "" || args.name == "null")  return res.json({ 'error': 'Not enough variables!' })
         let user = await MAIN_ROUTER.Users.find({ token: args.cookie.token })
         if (user.length == 0) return res.json({ 'error': 'Token is not valid!' })
         user = user[0]

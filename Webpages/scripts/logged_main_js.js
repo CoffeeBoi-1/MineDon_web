@@ -5,8 +5,8 @@ function QuitFromApp() {
 
 async function ChangePassword() {
     let newPassword = await prompt('Новый пароль', '')
-    let res = await $.get('api/change_password?newPassword=' + newPassword)
+    let res = await $.get('api/request_change_password?newPassword=' + newPassword)
     if (res['error']) return alert(res['error'])
 
-    alert('Password has been changed')
+    alert('Email was sent! Check your email!')
 }

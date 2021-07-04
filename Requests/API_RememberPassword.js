@@ -18,9 +18,12 @@ module.exports = {
       subject: '',
       html: msg
     }
-    MAIN_ROUTER.transporter.sendMail(mailOptions, (e, data) => {
-      if (e) return res.json({ 'error': 'Something wrong with your eMail' })
-    })
-    if (!res.headersSent) res.sendStatus(200)
+
+    try {
+      await MAIN_ROUTER.transporter.sendMail(mailOptions)
+      res.sendStatus(200)
+    } catch (e) {
+      res.json({ 'error': 'Something wrong with your eMail' })
+    }
   }
 };

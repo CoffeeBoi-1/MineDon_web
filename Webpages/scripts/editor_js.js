@@ -30,3 +30,12 @@ async function AddOption() {
     $('.scroller').append(OPTIONS[res['id']].GetEditorUIElement())
     alert('Success!')
 }
+
+async function EditOption(id) {
+    $(`#${id}`).empty();
+    $(`#${id}`).append(OPTIONS[id].GetEditableUIElement())
+}
+
+async function UpdateOption() {
+
+}
