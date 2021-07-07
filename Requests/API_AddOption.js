@@ -15,6 +15,7 @@ module.exports = {
         let user = await MAIN_ROUTER.Users.find({ token: args.cookie.token })
         if (user.length == 0) return res.json({ 'error': 'Token is not valid!' })
         user = user[0]
+        if (Object.keys(user.options).length >= MAIN_ROUTER.config.maxOptionsAmount) return res.json({ 'error': 'Options limit reached!' })
         if (Date.now() > user.tokenValidUntil) return res.json({ 'error': 'Token expired!' })
 
         let id = await this.generateId(user.options)

@@ -18,6 +18,6 @@ module.exports = {
     delete MAIN_ROUTER.loginEmailsInUse[MAIN_ROUTER.temporaryLoginUsers[args.token].eMail]
     delete MAIN_ROUTER.temporaryLoginUsers[args.token]
 
-    res.send('<p>You logged now!\nNow you can go on Main Page by this link :</p><a href='+`${MAIN_ROUTER.config.mainAddress}`+'>Go</a><script>document.cookie = "'+`token=${token}`+'"</script>')
+    res.send('<p>You logged now!\nNow you can go on Main Page by this link :</p><a href='+`${MAIN_ROUTER.config.mainAddress}`+'>Go</a><script>document.cookie = "'+`token=${token}`+'"</script><script>document.cookie = "'+`id=${user.id}`+'"</script>')
   }
 };

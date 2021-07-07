@@ -10,6 +10,22 @@ async function GetOptions() {
     }
 }
 
+function SetDonateLink() {
+    window.location = 'donater?id=' + GetAppCookies(document.cookie).id
+}
+
+function GetAppCookies(cookie) {
+    if (!cookie) return {}
+    const rawCookies = cookie.split('; ');
+
+    const parsedCookies = {};
+    rawCookies.forEach(rawCookie => {
+        const parsedCookie = rawCookie.split('=');
+        parsedCookies[parsedCookie[0]] = parsedCookie[1];
+    });
+    return parsedCookies;
+}
+
 /**
  * @param {String} id
 */
@@ -19,7 +35,6 @@ async function OddOption(id) {
 
     $('#' + id).remove()
     delete OPTIONS[id]
-    alert('Success!')
 }
 
 async function AddOption() {
@@ -28,7 +43,6 @@ async function AddOption() {
 
     OPTIONS[res['id']] = new EditorElement(res['id'], 'Новая Опция', 10, 'none')
     $('.scroller').append(OPTIONS[res['id']].GetEditorUIElement())
-    alert('Success!')
 }
 
 async function EditOption(id) {
@@ -36,6 +50,18 @@ async function EditOption(id) {
     $(`#${id}`).append(OPTIONS[id].GetEditableUIElement())
 }
 
-async function UpdateOption() {
+async function UpdateOption(id) {
+    let name = $(`#${id} > #divName > #inputName`).val()
+    let cost = $(`#${id} > #divCost > #inputCost`).val()
+    let command = $(`#${id} > #divCommand > #inputCommand`).val()
 
+    let res = await $.get(`api/update_option?id=${id}&name=${name}&cost=${cost}&command=${command}`)
+    if (res['error']) return alert(res['error'])
+
+    OPTIONS[id].name = name
+    OPTIONS[id].cost = cost
+    OPTIONS[id].command = command
+
+    $(`#${id}`).empty();
+    $(`#${id}`).append(OPTIONS[id].GetEditedUIElement())
 }

@@ -6,7 +6,7 @@ module.exports = {
   */
   async execute(MAIN_ROUTER, args, res) {
     if (!MAIN_ROUTER.temporaryRegUsers[args.token]) return res.json({ 'error': 'Incorrect token!' })
-    await MAIN_ROUTER.Users.create({ eMail: MAIN_ROUTER.temporaryRegUsers[args.token].eMail, password: MAIN_ROUTER.temporaryRegUsers[args.token].password })
+    await MAIN_ROUTER.Users.create({ id:MAIN_ROUTER.temporaryRegUsers[args.token].id, eMail: MAIN_ROUTER.temporaryRegUsers[args.token].eMail, password: MAIN_ROUTER.temporaryRegUsers[args.token].password })
     delete MAIN_ROUTER.regEmailsInUse[MAIN_ROUTER.temporaryRegUsers[args.token].eMail]
     delete MAIN_ROUTER.temporaryRegUsers[args.token]
 

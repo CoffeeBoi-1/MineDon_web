@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'api/edit_option',
+    name: 'api/update_option',
 
     /**
      * @param {import('express').Response} res
