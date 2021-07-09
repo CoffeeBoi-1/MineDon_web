@@ -1,5 +1,6 @@
 module.exports = {
     name: 'api/token_valid',
+    rateTime: 0,
 
     /**
      * @param {import('express').Response} res

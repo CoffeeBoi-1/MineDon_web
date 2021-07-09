@@ -2,6 +2,7 @@ const $ = require('coffeetils');
 
 module.exports = {
   name: 'api/remember_password',
+  rateTime: 30 * 60 * 1000,
 
   /**
    * @param {import('express').Response} res
@@ -25,5 +26,6 @@ module.exports = {
     } catch (e) {
       res.json({ 'error': 'Something wrong with your eMail' })
     }
+    MAIN_ROUTER.RateLimiter.AddIpLimit(args.ip, this.name, this.rateTime)
   }
 };

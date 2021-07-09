@@ -2,6 +2,7 @@ const TokenGenerator = require('uuid-token-generator');
 
 module.exports = {
     name: 'api/add_option',
+    rateTime: 0,
 
     /**
      * @param {import('express').Response} res

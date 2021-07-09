@@ -2,6 +2,7 @@ const ChangePasswordRequest = require('../Objects/ChangePasswordRequest');
 
 module.exports = {
     name: 'api/request_change_password',
+    rateTime: 30 * 60 * 1000,
 
     /**
      * @param {import('express').Response} res
@@ -16,7 +17,7 @@ module.exports = {
         if (MAIN_ROUTER.changePasswordRequests[args.cookie.token]) return res.json({ 'error': 'wait.' })
 
         let changePasswordRequest = new ChangePasswordRequest(args.newPassword)
-        changePasswordRequest.confirmTimeout = setTimeout(() => { delete MAIN_ROUTER.changePasswordRequests[args.cookie.token];}, MAIN_ROUTER.config.confirmTimeout)
+        changePasswordRequest.confirmTimeout = setTimeout(() => { delete MAIN_ROUTER.changePasswordRequests[args.cookie.token]; }, MAIN_ROUTER.config.confirmTimeout)
         MAIN_ROUTER.changePasswordRequests[args.cookie.token] = changePasswordRequest
 
         let link = '<p>Go by this link for confirm change password :</p>\n' + `<a href='${MAIN_ROUTER.config.mainAddress + 'api/change_password'}'>Confirm</a>`
@@ -27,11 +28,12 @@ module.exports = {
             html: link
         }
 
-        try{
+        try {
             await MAIN_ROUTER.transporter.sendMail(mailOptions)
             res.sendStatus(200)
-        } catch(e) {
+        } catch (e) {
             res.json({ 'error': 'Something wrong with your eMail' })
         }
+        MAIN_ROUTER.RateLimiter.AddIpLimit(args.ip, this.name, this.rateTime)
     }
 };

@@ -1,5 +1,6 @@
 module.exports = {
     name: 'api/odd_option',
+    rateTime: 0,
 
     /**
      * @param {import('express').Response} res

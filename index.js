@@ -8,6 +8,7 @@ const readline = require('readline')
 const $ = require('coffeetils')
 const mongoose = require('mongoose')
 const config = require('./config.json')
+const RateLimiter = require('./Objects/RateLimiter')
 
 const MAIN_ROUTER = {}
 
@@ -20,6 +21,7 @@ async function Start() {
         MAIN_ROUTER.regEmailsInUse = {}
         MAIN_ROUTER.loginEmailsInUse = {}
         MAIN_ROUTER.changePasswordRequests = {}
+        MAIN_ROUTER.RateLimiter = new RateLimiter()
         MAIN_ROUTER.transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.EMAIL_LOGIN, pass: process.env.EMAIL_PASS } })
         MAIN_ROUTER.transporter.verify((error) => { if (error) { console.log('Error with email connection'); process.exit() } })
         await mongoose.connect(process.env.DB_LINK, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
@@ -42,6 +44,11 @@ async function Start() {
                 if (!command) return res.sendStatus(400)
 
                 req.query.cookie = $.GetAppCookies(req.headers.cookie)
+                let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+                req.query.ip = ip
+
+                if (MAIN_ROUTER.RateLimiter.RequestIsLimited(ip, command.name, command.rateTime)) return res.json({ 'error': 'Rate Limited' })
+
                 await command.execute(MAIN_ROUTER, req.query, res)
                 if (path.includes('api')) next()
             } catch (error) {

@@ -1,5 +1,6 @@
 module.exports = {
     name: 'api/get_options',
+    rateTime: 0,
 
     /**
      * @param {import('express').Response} res

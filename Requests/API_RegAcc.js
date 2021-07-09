@@ -3,6 +3,7 @@ const $ = require('coffeetils');
 
 module.exports = {
   name: 'api/reg_acc',
+  rateTime: 60 * 60 * 1000,
 
   /**
    * @param {import('express').Response} res
@@ -27,12 +28,13 @@ module.exports = {
       subject: 'Verify your eMail',
       html: link
     }
-    
+
     try {
       await MAIN_ROUTER.transporter.sendMail(mailOptions)
       res.sendStatus(200)
     } catch (e) {
       res.json({ 'error': 'Something wrong with your eMail' })
     }
+    MAIN_ROUTER.RateLimiter.AddIpLimit(args.ip, this.name, this.rateTime)
   }
 };

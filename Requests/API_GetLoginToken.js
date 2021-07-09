@@ -3,6 +3,7 @@ const $ = require('coffeetils')
 
 module.exports = {
     name: 'api/get_login_token',
+    rateTime: 0,
 
     /**
      * @param {import('express').Response} res

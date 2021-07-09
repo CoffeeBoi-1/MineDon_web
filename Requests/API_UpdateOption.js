@@ -1,5 +1,6 @@
 module.exports = {
     name: 'api/update_option',
+    rateTime: 0,
 
     /**
      * @param {import('express').Response} res

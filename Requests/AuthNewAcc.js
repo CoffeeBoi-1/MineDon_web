@@ -1,5 +1,6 @@
 module.exports = {
   name: 'AuthNewAcc',
+  rateTime: 0,
 
   /**
    * @param {import('express').Response} res
