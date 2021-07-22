@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2aa253a2-4b38-4183-8764-351791946a0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Requests/API_AddOption.js" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/API_AddOption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/API_TokenValid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Requests/API_UpdateOption.js" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/API_UpdateOption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Webpages/html/editor_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/Webpages/html/editor_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Webpages/scripts/Objects/DonaterElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/Webpages/scripts/Objects/DonaterElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Webpages/scripts/Objects/EditorElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/Webpages/scripts/Objects/EditorElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vZi9vBhieH5l4WzUy1CoRtyWRr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2aa253a2-4b38-4183-8764-351791946a0b" name="Default Changelist" comment="" />
+      <created>1626775863941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626775863941</updated>
+    </task>
+    <servers />
+  </component>
+</project>

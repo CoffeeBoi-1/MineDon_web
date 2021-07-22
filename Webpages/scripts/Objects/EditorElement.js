@@ -26,7 +26,7 @@ class EditorElement {
         </div>
         <div style="width: 100%;">
             <a class="normalText" style="margin-left: 5px;font-size: 1.6em;width: 107px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;">Команда : </a>
-            <a class="titleText" style="font-size: 1.6em;width: 200px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;" title="${this.command}">${this.command}</a>
+            <a class="titleText" style="font-size: 1.6em;width: 200px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;" title='${this.command}'>${this.command}</a>
         </div>
     </div>`
     }
@@ -43,7 +43,7 @@ class EditorElement {
         </div>
         <div id="divCommand" style="width: 100%;margin-bottom: 10px;">
             <a class="normalText" style="margin-left: 5px;height: 100px;font-size: 1.6em;">Команда : </a>
-            <input id="inputCommand" value="${this.command}" class="titleText" style="font-size: 1.6em;width: 150px;background: transparent;border: none;">
+            <input id="inputCommand" value='${this.command}' title='${this.command}' class="titleText" style="font-size: 1.6em;width: 150px;background: transparent;border: none;">
         </div>`
     }
 
@@ -60,7 +60,7 @@ class EditorElement {
         </div>
         <div style="width: 100%;">
             <a class="normalText" style="margin-left: 5px;font-size: 1.6em;width: 107px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;">Команда : </a>
-            <a class="titleText" style="font-size: 1.6em;width: 200px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;" title="${this.command}">${this.command}</a>
+            <a class="titleText" style="font-size: 1.6em;width: 200px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;" title='${this.command}'>${this.command}</a>
         </div>`
     }
 }

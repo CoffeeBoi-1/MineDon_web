@@ -20,7 +20,7 @@ module.exports = {
         if (Date.now() > user.tokenValidUntil) return res.json({ 'error': 'Token expired!' })
 
         let id = await this.generateId(user.options)
-        user.options[id] = { name: args.name, cost: args.cost, command: args.command }
+        user.options[id] = { name: args.name, cost: parseInt(args.cost), command: args.command }
         let newValue = { options: user.options }
         await MAIN_ROUTER.Users.updateOne({ token: args.cookie.token }, { $set: newValue })
         res.json({ 'id': id })

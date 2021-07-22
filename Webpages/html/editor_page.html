@@ -19,9 +19,13 @@
     <div>
         <button onclick="window.location='/'" style="width: 44px; padding: 0px; font-size: 2em; margin-left: 10px;" class="btn roundedCorners" title="На главную">x</button>
         <button onclick="AddOption()" style="width: 44px; padding: 0px; font-size: 2em; margin-left: 10px;" class="btn roundedCorners" title="Добавить Опцию">+</button>
-        <span style='margin-left: 15px; font-size: 1em;' class='normalText'>Ссылка на вашу страницу доната : <a href='#' onclick="SetDonateLink()" style='font-size: 1em;' class='titleText'>Ссылка</a></span>
+        <span style='margin-left: 15px; font-size: 1em;' class='normalText'>Ссылка на вашу страницу для выбора опции : <a href='#' onclick="SetDonateLink()" style='font-size: 1em;' class='titleText'>Ссылка</a></span>
+        <span id='idSpan' style='margin-left: 15px; font-size: 1em;' class='normalText'>Ваш ID : <a id='idText' style='font-size: 1em;' class='titleText'></a></span>
+        <a href='https://drive.google.com/drive/folders/190S1lcvY-ww3yHtKaNYQpR8OkAotQwrG?usp=sharing' style='margin-left: 15px; font-size: 1em;' class='normalText'>Скачать Мод</a>
+        <button onclick='GetTestJson()' style="padding: 2px; font-size: 1em; margin-left: 15px;" class="btn roundedCorners" title="Нужно вставить в поле Тест на стриме">Тест соединения</button>
     </div>
     <div class="scroller"></div>
+    <script>$('#idSpan > #idText').html(GetAppCookies(document.cookie).id)</script>
 </body>
 
 </html>
