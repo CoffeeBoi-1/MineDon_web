@@ -11,16 +11,24 @@ module.exports = {
         if (!args.id) return res.json({ 'error': 'Not enough variables!' })
         if (isNaN(args.cost) || args.cost < 1) return res.json({ 'error': 'Cost in not a number' })
         if (!args.command || args.command == "" || args.command == "null") return res.json({ 'error': 'Not enough variables!' })
-        if (!args.name || args.name == "" || args.name == "null")  return res.json({ 'error': 'Not enough variables!' })
+        if (!args.name || args.name == "" || args.name == "null") return res.json({ 'error': 'Not enough variables!' })
         let user = await MAIN_ROUTER.Users.find({ token: args.cookie.token })
         if (user.length == 0) return res.json({ 'error': 'Token is not valid!' })
         user = user[0]
+        if (parseInt(args.cost) != 0 && !this.costIsAvailable(user, args.id, parseInt(args.cost))) return res.json({ 'error': 'This cost already exists' })
         if (!user.options[args.id]) return res.json({ 'error': 'There is no a such id!' })
         if (Date.now() > user.tokenValidUntil) return res.json({ 'error': 'Token expired!' })
-        
+
         user.options[args.id] = { name: args.name, cost: parseInt(args.cost), command: args.command }
         let newValue = { options: user.options }
         await MAIN_ROUTER.Users.updateOne({ token: args.cookie.token }, { $set: newValue })
         res.sendStatus(200)
+    },
+
+    costIsAvailable(user, id, cost) {
+        for (var i in user.options) {
+            if (user.options[i].cost == cost && i != id) return false
+        }
+        return true
     }
 };

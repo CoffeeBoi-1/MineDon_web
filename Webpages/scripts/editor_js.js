@@ -38,10 +38,10 @@ async function OddOption(id) {
 }
 
 async function AddOption() {
-    let res = await $.get('api/add_option?name=Новая Опция&cost=10&command=none')
+    let res = await $.get('api/add_option?name=Новая Опция&command=none')
     if (res['error']) return alert(res['error'])
 
-    OPTIONS[res['id']] = new EditorElement(res['id'], 'Новая Опция', 10, 'none')
+    OPTIONS[res['id']] = new EditorElement(res['id'], 'Новая Опция', 0, 'none')
     $('.scroller').append(OPTIONS[res['id']].GetEditorUIElement())
 }
 
