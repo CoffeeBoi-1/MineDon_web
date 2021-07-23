@@ -1,1 +1,1 @@
-web: set EMAIL_LOGIN=shitra2018@gmail.com&& set EMAIL_PASS=SemaGoToGardenLOL&& set DB_LINK=mongodb+srv://shitra2018:games300@cluster0.kolqb.mongodb.net/Users&& nodemon index.js
+web: EMAIL_LOGIN='shitra2018@gmail.com' EMAIL_PASS='SemaGoToGardenLOL' DB_LINK='mongodb+srv://shitra2018:games300@cluster0.kolqb.mongodb.net/Users' node index.js
