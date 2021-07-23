@@ -9,15 +9,3 @@ async function GetOptions(id) {
         $('.scroller').append(OPTIONS[e].GetDonaterUIElement())
     }
 }
-
-function SetClipboard(text) {
-    var dummy = document.createElement('input');
-    document.body.appendChild(dummy);
-    dummy.setAttribute('id', 'dummy_id');
-    document.getElementById('dummy_id').value=JSON.stringify(text);
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
-
-    alert('Copied!')
-  }
