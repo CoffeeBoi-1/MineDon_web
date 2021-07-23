@@ -1,5 +1,5 @@
 {
-    "mainAddress": "https://fc4f1af5771a.ngrok.io/",
+    "mainAddress": "https://mine-don-server.herokuapp.com/",
     "tokenValidDays": 3,
     "maxOptionsAmount": 45,
     "confirmTimeout": 300000,

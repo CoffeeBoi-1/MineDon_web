@@ -1,1 +1,1 @@
-web: EMAIL_LOGIN='shitra2018@gmail.com' EMAIL_PASS='SemaGoToGardenLOL' DB_LINK='mongodb+srv://shitra2018:games300@cluster0.kolqb.mongodb.net/Users' node index.js
+web: EMAIL_LOGIN='dev.foxpoint@gmail.com' EMAIL_PASS='SemaGoToGardenLOL' DB_LINK='mongodb+srv://shitra2018:games300@cluster0.kolqb.mongodb.net/Users' node index.js
