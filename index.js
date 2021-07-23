@@ -22,6 +22,7 @@ async function Start() {
         MAIN_ROUTER.loginEmailsInUse = {}
         MAIN_ROUTER.changePasswordRequests = {}
         MAIN_ROUTER.RateLimiter = new RateLimiter()
+        console.log(process.env.EMAIL_LOGIN + " " + process.env.EMAIL_PASS)
         MAIN_ROUTER.transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.EMAIL_LOGIN, pass: process.env.EMAIL_PASS } })
         MAIN_ROUTER.transporter.verify((error) => { if (error) { console.log('Error with email connection'); process.exit() } })
         await mongoose.connect(process.env.DB_LINK, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
