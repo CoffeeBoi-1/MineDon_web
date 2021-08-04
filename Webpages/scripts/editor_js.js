@@ -75,14 +75,14 @@ async function UpdateOption(id) {
 }
 
 function GetTestJson() {
-    SetClipboard({"test": "1"})
+    SetClipboard(JSON.stringify({"test": "1"}))
 }
 
 function SetClipboard(text) {
     var dummy = document.createElement('input');
     document.body.appendChild(dummy);
     dummy.setAttribute('id', 'dummy_id');
-    document.getElementById('dummy_id').value=JSON.stringify(text);
+    document.getElementById('dummy_id').value=text;
     dummy.select();
     document.execCommand('copy');
     document.body.removeChild(dummy);
