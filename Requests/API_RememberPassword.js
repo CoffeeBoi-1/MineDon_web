@@ -8,11 +8,11 @@ module.exports = {
    * @param {import('express').Response} res
   */
   async execute(MAIN_ROUTER, args, res) {
-    if (!$.ValidateEmail(args.email)) return res.json({ 'error': 'Is not email' })
+    if (!$.ValidateEmail(args.email)) return res.json({ 'error': 'Это не почта' })
     let user = await MAIN_ROUTER.Users.find({ eMail: args.email })
-    if (user.length == 0) return res.json({ 'error': 'This email is not registered' })
+    if (user.length == 0) return res.json({ 'error': 'Такая почта не зарегистрирована' })
 
-    let msg = 'Your password is :\n' + `${user[0].password}`
+    let msg = 'Твой пароль :\n' + `${user[0].password}`
     let mailOptions = {
       from: process.env.EMAIL_LOGIN,
       to: args.email,

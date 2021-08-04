@@ -17,15 +17,22 @@
 <body>
     <script>GetOptions()</script>
     <div>
-        <button onclick="window.location='/'" style="width: 44px; padding: 0px; font-size: 2em; margin-left: 10px;" class="btn roundedCorners" title="На главную">x</button>
-        <button onclick="AddOption()" style="width: 44px; padding: 0px; font-size: 2em; margin-left: 10px;" class="btn roundedCorners" title="Добавить Опцию">+</button>
-        <span style='margin-left: 15px; font-size: 1em;' class='normalText'>Ссылка на вашу страницу для выбора опции : <a href='#' onclick="SetDonateLink()" style='font-size: 1em;' class='titleText'>Ссылка</a></span>
-        <span id='idSpan' style='margin-left: 15px; font-size: 1em;' class='normalText'>Ваш ID : <a id='idText' style='font-size: 1em;' class='titleText'></a></span>
-        <a href='https://drive.google.com/drive/folders/190S1lcvY-ww3yHtKaNYQpR8OkAotQwrG?usp=sharing' style='margin-left: 15px; font-size: 1em;' class='normalText'>Скачать Мод</a>
-        <button onclick='GetTestJson()' style="padding: 2px; font-size: 1em; margin-left: 15px;" class="btn roundedCorners" title="Нужно вставить в поле Тест на стриме">Тест соединения</button>
+        <button onclick="window.location='/'" style='width: 44px; padding: 0px; font-size: 2em; margin-left: 10px;' class='btn roundedCorners' title='На главную'>x</button>
+        <button onclick='AddOption()' style='width: 44px; padding: 0px; font-size: 2em; margin-left: 10px;' class='btn roundedCorners' title='Добавить Опцию'>+</button>
+        <div class='dropdown' style='margin-left: 10px;'>
+            <button style='width: 44px; padding: 0px; font-size: 2em;' class='btn roundedCorners'>></button>
+            <div class='dropdownContent'>
+                <button onclick='GotoMDDonatePage()' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners' title='Ссылка на вашу MineDon страницу'>Твоя MineDon страница</button>
+                <button onclick='location.href = "https://drive.google.com/file/d/1VA9gBVpeUPSA6wkJbEthoVFSdD-WiDb3/view?usp=sharing"' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners'>Скачать Мод</button>
+                <button onclick='location.href = "https://docs.google.com/document/d/1WdOHiVZc5Crqs8vH4TO8pwkJj8cmmJhxPIW_8NP-K54/edit?usp=sharing"' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners'>Инструкция для сайта</button>
+                <button onclick='location.href = "https://docs.google.com/document/d/1Yiuju8KpQ05zYNOCqcOx-Dkj9FFZiIHK6cVIQW5kkUI/edit?usp=sharing"' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners'>Инструкция для мода</button>
+                <button onclick='SetClipboard(GetAppCookies(document.cookie).id)' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners' title='Скопировать ваш ID'>Ваш ID</button>
+                <button onclick='SetDonattyLink()' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners' title='Будет на твоей MineDon странице'>Ссылка на Donatty</button>
+                <button onclick='GetTestJson()' style='font-size: 1em; margin-bottom: 5px;' class='btn roundedCorners' title='Нужно вставить в поле "Тест на стриме"'>Тест соединения</button>
+            </div>
+        </div>
     </div>
     <div class="scroller"></div>
-    <script>$('#idSpan > #idText').html(GetAppCookies(document.cookie).id)</script>
 </body>
 
 </html>

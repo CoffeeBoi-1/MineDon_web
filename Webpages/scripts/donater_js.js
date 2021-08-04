@@ -9,3 +9,10 @@ async function GetOptions(id) {
         $('.scroller').append(OPTIONS[e].GetDonaterUIElement())
     }
 }
+
+async function GetDonattyLink(id) {
+    let res = await $.get('api/get_donatty_link?id=' + id)
+    if (res['error']) return alert(res['error'])
+
+    $('#mainText > #innerText').attr('href', res.link)
+}

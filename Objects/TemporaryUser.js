@@ -8,7 +8,7 @@ class TemporaryUser {
         this.id = new TokenGenerator().generate()
         this.eMail = eMail
         this.password = password
-        this.token = new TokenGenerator(256, TokenGenerator.BASE62).generate()
+        this.token = new TokenGenerator().generate().substr(0, 6)
         this.confirmTimeout
     }
 }

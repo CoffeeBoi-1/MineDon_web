@@ -1,5 +1,5 @@
 {
-    "mainAddress": "https://mine-don-server.herokuapp.com/",
+    "mainAddress": "https://mine-don.herokuapp.com/",
     "tokenValidDays": 3,
     "maxOptionsAmount": 45,
     "confirmTimeout": 300000,
@@ -28,6 +28,10 @@
             "type": "Object",
             "default": {},
             "required": true
+        },
+        "donattyLink": {
+            "type": "String",
+            "required": false
         }
     }
 }

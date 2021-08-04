@@ -8,11 +8,11 @@ module.exports = {
      * @param {import('express').Response} res
     */
     async execute(MAIN_ROUTER, args, res) {
-        if (!args.cookie.token) return res.json({ 'error': 'Token is not valid!' })
+        if (!args.cookie.token) return res.json({ 'error': 'Неверный Токен!' })
         let user = await MAIN_ROUTER.Users.find({ token: args.cookie.token })
-        if (user.length == 0) return res.json({ 'error': 'Token is not valid!' })
+        if (user.length == 0) return res.json({ 'error': 'Неверный Токен!' })
         user = user[0]
-        if (Date.now() > user.tokenValidUntil) return res.json({ 'error': 'Token expired!' })
+        if (Date.now() > user.tokenValidUntil) return res.json({ 'error': 'Срок годности токена истёк!' })
         if (!MAIN_ROUTER.changePasswordRequests[args.cookie.token]) return res.json({ 'error': 'error' })
 
         let request = MAIN_ROUTER.changePasswordRequests[args.cookie.token]

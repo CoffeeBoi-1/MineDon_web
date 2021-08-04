@@ -1,5 +1,13 @@
 let OPTIONS = {}
 
+async function SetDonattyLink() {
+    let link = await prompt('Ссылка на твою донат страницу в Donatty')
+    let res = await $.get('api/set_donatty_link?link=' + link)
+    if (res['error']) return alert(res['error'])
+
+    alert('OK')
+}
+
 async function GetOptions() {
     let res = await $.get('api/get_options')
     if (res['error']) return alert(res['error'])
@@ -10,7 +18,7 @@ async function GetOptions() {
     }
 }
 
-function SetDonateLink() {
+function GotoMDDonatePage() {
     window.location = 'donater?id=' + GetAppCookies(document.cookie).id
 }
 
