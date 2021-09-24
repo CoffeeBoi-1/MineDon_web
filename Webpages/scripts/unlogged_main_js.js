@@ -11,9 +11,15 @@ async function Login() {
     location.href = ''
 }
 
-async function RememberPassword () {
+async function RememberPassword() {
     let res = await $.get('api/remember_password?email=' + document.getElementById('emailInput').value)
     if (res['error']) return alert(res['error'])
 
     alert('Email was sent! Check your email')
+}
+
+function HideFooter() {
+    if (navigator.userAgent.includes('Windows')) return
+
+    $('#footer').hide()
 }
